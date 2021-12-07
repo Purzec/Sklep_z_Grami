@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja Auta </title>
+    <link  th:href="@{/css/adminStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<h1>Edycja planszówki <td><span th:text="${planszowka.name}"/>  </h1>
+<form th:action="@{'/boardgameEdit/'+${planszowka.id}+'/change/'}" method="post"   th:object="${car}">
+    <table>
+        <tr>
+            <p>Nową cenę za planszówkę</p>
+            <input type="number" th:name="price"/><br>
+        </tr>
+        <tr>
+            <p>Komentarze zostały zaatakowane przez niezalogowanych uzytkowników</p>
+            <input type="checkbox" th:name="graZostalaZaatakowana"/><br>
+        </tr>
+    </table>
+    <input type="submit" value="Save"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        body{
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;}
+    </style>
+    <meta charset="UTF-8">
+    <title>Rejestracja</title>
+    <link  th:href="@{/css/clientStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="navbar">
+    <a href="../" >Strona główna</a>
+    <a href="clientPanel" >Zaloguj się/Przejdź do panelu klienta</a>
+    <a href="adminPanel">Panel Admin</a>
+    <a href="./" >Cofnij</a>
+</div>
+
+<form th:action="@{/register}" method="post"><div>
+    <table bgcolor="silver">
+        <h2>Rejestracja</h2>
+        <p>(*)Podaj login:</p>
+        <input type="text" th:name="login"/><br>
+        <p>Maximum 15 znaków, nie może się powtarzać</p>
+        <p>(*)Podaj hasło: </p>
+        <input type="text" th:name="password"/><br>
+        <p>(*)Podaj email</p>
+        <input type="text" th:name="email"/><br>
+        <h5> Wszystkie pola z * są wymagane do rejestracji</h5>
+        <input type="submit"/> -->
+
+    </table>
+</div></form>
+<p><b>UWAGA!!! PO STWORZENIU KONTA, NALEŻY JE AKTYWOWAC ZA POMOCĄ LINKU OTRZYMANEGO NA MAILA!</b></p>
+</body>
+</html>

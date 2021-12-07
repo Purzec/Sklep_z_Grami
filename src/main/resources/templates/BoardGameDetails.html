@@ -1,0 +1,92 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/adminStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<h1>Szczegółowe informacje dotyczące planszowki
+    <td><span th:text="${boardgame.name}"/>
+</h1>
+<!--//todo wprowadzic informacje o planszowce i przycisk dodaj do koszyka-->
+<h2>Cena:
+    <td><span th:text="${boardgame.price}"/>
+</h2>
+<h2>Opis:
+    <td><span th:text="${boardgame.description}"/>
+</h2>
+<h2>Minimalna liczba graczy:
+    <td><span th:text="${boardgame.minPlayerToPlay}"/>
+</h2>
+<h2>Maksymalna liczba graczy:
+    <td><span th:text="${boardgame.maxPlayerToPlay}"/>
+</h2>
+<h2>Średnia ocena:
+    <td><span th:text="${playerScore}"/>
+</h2>
+<h2>Komentarze:
+</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th> TREŚĆ </th>
+        <th> TWÓRCA KOMENTARZA </th>
+        <th> RODZAJ KOMENTARZA </th>
+        <th> DATA WYSLANIA </th>
+        <th> OCENA </th>
+    </tr>
+    </thead>
+<!--lista komentarzy-->
+<tbody>
+<tr th:if="${boardgame.commentaryList.empty}">
+    <td colspan="2"> Brak Aut </td>
+</tr>
+<tr th:each="boardgameCom : ${boardgame.commentaryList}">
+
+    <h3>
+        <td><span th:text="${boardgameCom.content}"> </span></td>
+    </h3>
+    <h4>
+        <td><span th:text="${boardgameCom.commentCreator}"> </span></td>
+    </h4>
+    <h5>
+        <td><span th:text="${boardgameCom.commentaryType}"> </span></td>
+    </h5>
+    <h6>
+        <td><span th:text="${boardgameCom.sentDate}"> </span></td>
+    </h6>
+    <h3>
+        <td><span th:text="${boardgameCom.score}"> </span></td>
+    </h3>
+</tr>
+</tbody>
+</table>
+
+<form th:action="@{'/boardgame/'+${boardgame.id}+'/addCom'}" method="post"   th:object="${commentary}">
+    <table>
+        <tr>
+            <p>Wpisz treść Komentarza</p>
+            <input type="text" th:name="content"/><br>
+        </tr>
+        <p>Wybierz oddział do jakiego chcesz przypisać auto</p>
+        <select th:name="score">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+    </table>
+    <input type="submit" value="Save"/>
+</form>
+</body>
+</html>

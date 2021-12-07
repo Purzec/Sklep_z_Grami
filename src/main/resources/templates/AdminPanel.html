@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona Główna</title>
+    <link th:href="@{/css/mainPageStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="navbar">
+    <a href="../">Strona główna</a>
+    <a href="register">Stwórz konto</a>
+    <a href="search">Szukaj produktu</a>
+
+
+</div>
+<h1>ZNAJDŹ PLANSZÓWKĘ</h1>
+</div>
+<h5> Lista planszówek</h5>
+</center>
+<td><a th:href="@{/addBoardGame/}">Dodaj Planszówke</a></td>
+<table>
+    <thead>
+    <tr>
+        <th> Nazwa</th>
+        <th> Opis</th>
+        <th> Ocena</th>
+        <th> CENA</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${planszowki.empty}">
+        <td colspan="2"> Brak planszówek na Stanie</td>
+    </tr>
+    <tr th:each="planszowka : ${planszowki}">
+        <td><span th:text="${planszowka.name}"> Nazwa </span></td>
+        <td><span th:text="${planszowka.description}"> opis </span></td>
+        <td><span th:text="${planszowka.averageGrade}"> Ocena </span></td>
+        <td><span th:text="${planszowka.price}"> Cena </span></td>
+        <td><a th:href="@{'/boardgame/'+ ${planszowka.id}}">Pokaz szczegóły</a></td>
+        <td><a th:href="@{'/boardGameEdit/'+ ${planszowka.id}}">edytuj</a></td>
+        <td><a th:href="@{'/delete/'+ ${planszowka.id}}">usuń</a></td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

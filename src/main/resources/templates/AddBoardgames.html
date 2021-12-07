@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja Auta </title>
+    <link  th:href="@{/css/adminStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<h1>Dodaj planszówke<td><span th:text="${planszowka.name}"/>  </h1>
+<form th:action="@{'/addBoardGames'}" method="post"   th:object="${planszowka}">
+    <table>
+        <tr>
+            <p>nazwa</p>
+            <input type="text" th:name="name"/><br>
+        </tr>
+        <tr>
+            <p>opis</p>
+            <input type="text" th:name="description"/><br>
+        </tr>
+            <th>
+                <p>Wpisz cene</p>
+                <input type="number" value="0" th:name="price"/><br>
+            </th>
+            <th>
+                <p>Wpisz minimalna liczbe graczy</p>
+                <input type="number" value="0" th:name="minPlayerToPlay"/><br>
+
+                <p>Wpisz maksymalna liczbe graczy</p>
+                <input type="number" value="0"  th:name="maxPlayerToPlay"/><br>
+            </th>
+            <th>
+                <p>Wpisz minimalny czas gry</p>
+                <input type="number" value="0" th:name="minTime"/><br>
+
+                <p>Wpisz maksymalny czas gry</p>
+                <input type="number"  value="0"th:name="maxTime"/><br>
+            </th>
+            <th>
+                <p>Wpisz wagę</p>
+                <input type="number" value="0" th:name="weight"/><br>
+    </table>
+    <input type="submit" value="Save"/>
+</form>
+</body>
+</html>
